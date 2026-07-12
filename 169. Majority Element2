@@ -1,0 +1,38 @@
+class Solution:## BETTER
+    def majorityElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        freq = {}
+        for num in nums:
+            if num in freq:
+                freq[num] +=1
+            else:
+                freq[num]=1
+        for num in freq:
+            if freq[num] > (n//2):
+                return num
+
+class Solution: ## BRUTE FORCE
+    def majorityElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        for i in range(n):
+            count = 0
+            for j in range(n):
+                if(nums[i]==nums[j]):
+                    count+=1
+            if count > n//2:
+                return(nums[i])
+
+
+class Solution: ##OPTIMAL
+    def majorityElement(self, nums: List[int]) -> int:
+        el = 0
+        count = 0
+        for i in range (len(nums)):
+            if(count==0):
+                count+=1
+                el = nums[i]
+            elif (nums[i] == el):
+                count+=1
+            else:
+                count-=1
+        return el
