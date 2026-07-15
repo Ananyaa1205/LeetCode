@@ -1,0 +1,23 @@
+class Solution: ## BETTER
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        m = float("-inf")
+        for i in range (n):
+            total = 0
+            for j in range (i,n):
+                total += nums[j]
+                m = max(total,m)
+        return m
+
+class Solution: ## OPTIMAL
+    def maxSubArray(self, nums: List[int]) -> int:
+        n=len(nums)
+        sum = 0
+        m = float("-inf")
+        for i in range(n):
+            sum += nums[i]
+            if sum>m:
+                m = sum
+            if sum<0:
+                sum=0
+        return m
