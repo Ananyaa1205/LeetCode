@@ -1,4 +1,4 @@
-class Solution:
+class Solution: // WITH EXTRA 0
     def findMiddleIndex(self, nums: List[int]) -> int:
         prefix = [0] * (len(nums)+1)
         for i in range(len(nums)):
@@ -6,6 +6,19 @@ class Solution:
         for i in range(len(nums)):
             left = prefix[i]
             right = prefix[-1]-prefix[i+1]
+            if left == right:
+                return i
+        return -1
+
+
+class Solution: // WITHOUT 0
+    def findMiddleIndex(self, nums: List[int]) -> int:
+        prefix = [0] * len(nums)
+        for i in range(len(nums)):
+            prefix[i] = prefix[i-1] + nums[i]
+        for i in range(len(nums)):
+            left = 0 if i==0 else prefix[i-1]
+            right = prefix[-1]-prefix[i]
             if left == right:
                 return i
         return -1
