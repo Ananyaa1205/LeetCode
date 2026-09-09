@@ -1,0 +1,17 @@
+class Solution: // OPTIMAL
+    def smallestDivisor(self, nums: List[int], threshold: int) -> int:
+        low = 1
+        high = max(nums)
+        ans = 0
+       
+        while low<=high:
+            mid = (low+high)//2
+            sum = 0
+            for i in range(len(nums)):
+                sum += ceil(nums[i]/mid)
+            if sum > threshold:
+                low = mid+1
+            else:
+                ans = mid
+                high = mid-1
+        return ans
