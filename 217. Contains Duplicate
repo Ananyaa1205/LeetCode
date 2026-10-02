@@ -1,4 +1,4 @@
-class Solution:
+class Solution: ## BRUTE FORCE
     def containsDuplicate(self, nums: list[int]) -> bool:
         freq = {}
         for x in nums:
@@ -12,3 +12,14 @@ class Solution:
             
         return(False)
         
+class Solution: ## BETTER
+    def containsDuplicate(self, nums: list[int]) -> bool:
+        seen = set()
+        for x in nums:
+            if x in seen:
+                return True
+            seen.add(x)
+        return False
+class Solution: ## OPTIMAL
+    def containsDuplicate(self, nums: list[int]) -> bool:
+        return len(nums) != len(set(nums))
