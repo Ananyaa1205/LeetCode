@@ -1,0 +1,21 @@
+class Solution: ## BRUTE FORCE
+    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+        n = len(nums)
+        
+        for i in range (n):
+            for j in range (i+1,n):
+                if (nums[i] == nums[j]) and (abs(i-j)<=k):
+                    return True
+        return False
+
+class Solution: ## BETTER
+    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
+        freq = {}
+        for i in range(len(nums)):
+            num = nums[i]
+            if num in freq:
+                if i - freq[num] <= k:
+                    return True
+            freq[num] = i
+            
+        return False 
