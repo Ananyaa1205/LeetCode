@@ -4,3 +4,7 @@ class Solution:
         set2 = set(nums2)
         ans = list(set1.intersection(set2))
         return ans
+class Solution: ## MORE BETTER WAY
+    def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
+        return list(set(nums1) & set(nums2))
+        
