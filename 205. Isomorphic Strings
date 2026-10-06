@@ -1,0 +1,19 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        map1 = {}
+        map2 = {}
+        for i in range(len(s)):
+            char1 = s[i]
+            char2 = t[i]
+            if char1 in map1:
+                if map1[char1] != t[i]:
+                    return False
+            else:
+                map1[char1] = t[i]
+
+            if char2 in map2:
+                if map2[char2] != s[i]:
+                    return False
+            else:
+                map2[char2] = s[i]
+        return True
