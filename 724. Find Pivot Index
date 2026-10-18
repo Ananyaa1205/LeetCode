@@ -1,0 +1,12 @@
+class Solution:
+    def pivotIndex(self, nums: list[int]) -> int:
+        prefix = [0] * (len(nums)+1)
+        for i in range(len(nums)):
+            prefix[i+1] = prefix[i] + nums[i]
+        for i in range (len(nums)):
+            left = prefix[i]
+            right = prefix[-1] - left - nums[i]
+            if left == right:
+                return i
+            
+        return -1        
