@@ -1,0 +1,28 @@
+class Solution: ## BRUTE
+    def leftRightDifference(self, nums: List[int]) -> List[int]:
+        total = sum(nums)
+        left = [0] * len(nums)
+        left[0] = 0
+        right = [0] * len(nums)
+        right[-1] = 0
+        answer = [0] * len(nums)
+        for i in range(len(nums)-1):
+            left[i+1] = left[i] + nums[i]
+        for i in range (len(nums)-1,0,-1):
+            right[i-1] = right[i] + nums[i]
+        for i in range(len(nums)):
+            answer[i] = abs(left[i] - right[i])
+        return answer
+
+
+class Solution: ##OPTIMAL
+    def leftRightDifference(self, nums: List[int]) -> List[int]:
+        total = sum(nums)
+        l = 0
+        ans = []
+        for num in nums:
+            r = total - l - num
+            ans.append(abs(l-r))
+            l += num
+        return ans
+        
