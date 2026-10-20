@@ -1,0 +1,15 @@
+class Solution: ## BRUTE
+    def findDisappearedNumbers(self, nums: list[int]) -> list[int]:
+        n = len(nums)
+        freq = {}
+        ans = []
+        for num in nums:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+        for num in range(1,n+1):
+            if num not in freq:
+                ans.append(num)
+        return ans
+        
