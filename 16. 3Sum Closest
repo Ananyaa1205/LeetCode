@@ -15,3 +15,24 @@ class Solution:
                             min_diff=new_diff
                             closest_sum=curr_sum
         return closest_sum
+
+
+class Solution: ## OPTIMAL
+    def threeSumClosest(self, nums: list[int], target: int) -> int:
+        n = len(nums)
+        closest_sum = nums[0]+nums[1]+nums[2]
+        for i in range(0,n-2):
+            l = i+1
+            r = n-1
+            while l < r:
+                curr_s = nums[i] + nums[l] + nums[r]
+                if abs(curr_s - target) < abs(closest_sum - target):
+                    closest_sum= curr_s
+                if curr_s < target:
+                    l += 1
+                elif curr_s > target:
+                    r -= 1
+                else: 
+                    return curr_s
+        return closest_sum
+        
